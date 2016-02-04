@@ -11,7 +11,7 @@ module.exports = (function(){
 		   * @param {Object} obj
 		   * @return {String}
 		   */
-		  var param = function(obj) {
+		  var param = function (obj){
 		    var query = '', name, value, fullSubName, subName, subValue, innerObj, i;
 
 		    for(name in obj) {
@@ -20,7 +20,7 @@ module.exports = (function(){
 		      if(value instanceof Array) {
 		        for(i=0; i<value.length; ++i) {
 		          subValue = value[i];
-		          fullSubName = name + '[' + i + ']';
+		          fullSubName = name + '[${i}]';
 		          innerObj = {};
 		          innerObj[fullSubName] = subValue;
 		          query += param(innerObj) + '&';
@@ -29,7 +29,7 @@ module.exports = (function(){
 		      else if(value instanceof Object) {
 		        for(subName in value) {
 		          subValue = value[subName];
-		          fullSubName = name + '[' + subName + ']';
+		          fullSubName = name + '[${subName}]';
 		          innerObj = {};
 		          innerObj[fullSubName] = subValue;
 		          query += param(innerObj) + '&';
@@ -43,13 +43,13 @@ module.exports = (function(){
 		  };
 
 		  // Override $http service's default transformRequest
-		  $httpProvider.defaults.transformRequest = [function(data) {
+		  $httpProvider.defaults.transformRequest = [function(data){
 		    return angular.isObject(data) && String(data) !== '[object File]' ? param(data) : data;
 		  }];
 		}
 	);
 
-	app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
+	app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
 
 		$routeProvider
 		.when('/', {
@@ -61,7 +61,7 @@ module.exports = (function(){
 		$locationProvider.hashPrefix('!');
 	}]);
 
-	app.config(function (localStorageServiceProvider) {
+	app.config(function(localStorageServiceProvider){
 		// === TODO : define a prefix for your localstorage data
 		localStorageServiceProvider.setPrefix('todo');
 	});
