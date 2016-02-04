@@ -1,0 +1,24 @@
+{
+  "name": "strapi-front",
+  "private": true,
+  "version": "1.0.0",
+  "description": "A Strapi front app",
+  "author": "",
+  "license": "ISC",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --content-base ./static --inline --hot --progress --colors --port 3001"
+  },
+  "devDependencies": {
+    "angular": "^1.4.9",
+    "angular-local-storage": "^0.2.2",
+    "angular-route": "^1.4.9",
+    "css-loader": "^0.23.1",
+    "less": "^2.5.3",
+    "less-loader": "^2.2.2",
+    "lodash": "^3.10.1",
+    "style-loader": "^0.13.0",
+    "webpack": "^1.12.12",
+    "webpack-dev-server": "^1.14.1"
+  }
+}
