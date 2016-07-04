@@ -16,6 +16,10 @@ module.exports = {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 loaders: ['babel-loader']
+            },
+            {
+               test: /\.(eot|woff|woff2|ttf|svg|png|jpe?g|gif)(\?\S*)?$/,
+               loader: 'file'
             }
         ]
     }
