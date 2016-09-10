@@ -82,24 +82,20 @@ th{
 .txt-w{.txt(@w)};
 .txt-b{.txt(@b)}
 
-.txt-r{text-align: right;}
-.txt-c{text-align: center;}
-.txt-l{text-align: left;}
-.txt-j{text-align: justify;}
+.txt-r{text-align: right!important;}
+.txt-c{text-align: center!important;}
+.txt-l{text-align: left!important;}
+.txt-j{text-align: justify!important;}
 
-.txt-big{font-size: 1.2em}
-.txt-tiny{font-size: 0.8em}
+.txt-xl{font-size: 2em!important;}
+.txt-big{font-size: 1.5em!important;}
+.txt-tiny{font-size: 0.8em!important;}
 // LAYOUTS
 // --- CLEANER
-.p0{
-   padding: 0;
-}
-.p1{
-	padding: @p;
-}
-.m0{
-   margin: 0;
-}
+.p0{padding: 0;}
+.p1{dding: @p;}
+.m0{margin: 0;}
+.m1{margin: @p;}
 .pm0{
    .p0;
    .m0;
@@ -123,6 +119,7 @@ th{
 .bg-base2	{.bg(lighten(@base2, 20%));}
 .bg-base3	{.bg(lighten(@base3, 20%));}
 .bg-base3-r	{.bg(@base3);}
+.bg-transp	{.bg(transparent);}
 
 .bd(@c){
 	border: 2px solid @c;
@@ -138,6 +135,9 @@ th{
 }
 .shadow-b{
    box-shadow: 0px 5px 10px 2.5px fadeOut(@b, 75%);
+}
+.shadow-t{
+   box-shadow: 0px -5px 10px 2.5px fadeOut(@b, 75%);
 }
 .shadow-clr{
    box-shadow: none;
@@ -207,6 +207,7 @@ span.input{
 input{
    &[type="text"],
    &[type="number"],
+   &[type="url"],
    &[type="email"],
    &[type="password"]{
       .form-input-bloc;
@@ -298,6 +299,18 @@ input{
 		}
 	}
 }
+input[type="file"]{
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+	& + label{
+		cursor: pointer;
+		*{pointer-events: none;}
+	}
+}
 textarea{
    .noborder;
 }
@@ -316,7 +329,7 @@ input[type="reset"]{
    .form-input-bloc;
    .noborder;
    .btn-bg(@base1);
-   .shadow-b;
+  //  .shadow-b;
    cursor: pointer;
 	font-family: @base-font;
 	font-size: 1em;
